@@ -17,9 +17,12 @@ update(dt) {
 // Draw the enemy on the screen, required method for game
 render () { 
     ctx.drawImage(Resources.get(sprite), 10, 10)
+    console.log(sprite);
 }
 }
 
+let bug1 = new Enemy;
+bug1.render();
 
 // Now write your own player class
 // This class requires an update(), render() and
