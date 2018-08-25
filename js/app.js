@@ -1,9 +1,11 @@
 // Enemies our player must avoid
-
+let allEnemies = [];
 
 class Enemy {
 constructor(x, y, speed) {
-    this.sprite = 'images/enemy-bug.png'
+    this.sprite = 'images/enemy-bug.png';
+    this.x = x;
+    this.y = y;
 }
 
 // Update the enemy's position, required method for game
@@ -16,21 +18,28 @@ update(dt) {
 }
 // Draw the enemy on the screen, required method for game
 render () { 
-    ctx.drawImage(Resources.get(sprite), 10, 10)
-    console.log(sprite);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
 }
 }
 
-let bug1 = new Enemy;
-bug1.render();
+const bug1 = new Enemy(10,60);
+const bug2 = new Enemy(10, 140);
+const bug3 = new Enemy(10, 225);
+
+allEnemies.push(bug1);
+allEnemies.push(bug2);
+allEnemies.push(bug3);
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 
+
 class Player {
     constructor (x, y) {
-
+        this.sprite = 'images/char-boy.png';
+        this.x = x;
+        this.y = y;
     }
 
     update(dt) {
@@ -38,7 +47,7 @@ class Player {
     }
 
     render() {
-
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y)
     }
 
     handleInput() {
@@ -46,6 +55,7 @@ class Player {
     }
 }
 
+let player = new Player(200,390);
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
