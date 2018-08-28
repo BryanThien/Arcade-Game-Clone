@@ -57,18 +57,17 @@ class Player {
   }
 
   handleInput(keyPress) {
-    switch (keyPress) {
-      case "a":
-        this.x -= 100;
-        break;
-      case "s":
-        this.y += 83;
-        break;
-      case "d":
-        this.x += 100;
-        break;
-      case "w":
-        this.y -= 83;
+    if (keyPress == "a" && this.x > 0) {
+      this.x -= 100;
+    }
+    if (keyPress == "s" && this.y < 350) {
+      this.y += 83;
+    }
+    if (keyPress == "d" && this.x < 400) {
+      this.x += 100;
+    }
+    if (keyPress == "w" && this.y > 0) {
+      this.y -= 83;
     }
   }
 }
