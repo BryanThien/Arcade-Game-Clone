@@ -1,6 +1,11 @@
-frontend-nanodegree-arcade-game
+Bryan's frontend-nanodegree-arcade-game
 ===============================
+## Instalation
+1. Click the green "Clone or download" and select Download ZIP
+2. Right click the downloaded folder and select Extract All...
+3. Open up the extrated folder and open the "index" file and you can start playing. Game instructions below. 
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+## Game Instructions
+Goal of the game is to reach the water at the top of the game area without touching any of the bugs. Once you complete you will be sent back to the start for another round.Bugs will send you back to the start if you touch them.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
