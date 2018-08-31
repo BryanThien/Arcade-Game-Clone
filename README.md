@@ -1,6 +1,6 @@
 Bryan's frontend-nanodegree-arcade-game
 ===============================
-## Instalation
+## Installation
 1. Click the green "Clone or download" on the top right and select Download ZIP
 2. Right click the downloaded folder and select Extract All...
 3. Open up the extracted folder and open the "index" file and you can start playing. Game instructions below. 
