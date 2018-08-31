@@ -1,7 +1,8 @@
-// Enemies our player must avoid
+// Enemies that are rendered
 let allEnemies = [];
 
 class Enemy {
+  //Enemy object creator
   constructor(x, y, speed) {
     this.sprite = "images/enemy-bug.png";
     this.x = x;
@@ -9,21 +10,26 @@ class Enemy {
     this.speed = speed;
   }
 
-  // Update the enemy's position, required method for game
-  // Parameter: dt, a time delta between ticks
-
+  // Sets the speed of enemies and checks if there is a collision with player
   update(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     this.x += this.speed * dt;
 
     if (this.x > 510) {
       this.x = -50;
       this.speed = 150 + Math.floor(Math.random() * 222);
     }
+
+    if (
+      player.x < this.x + 75 &&
+      player.x + 75 > this.x &&
+      player.y < this.y + 60 &&
+      60 + player.y > this.y
+    ) {
+      player.x = 200;
+      player.y = 390;
+    }
   }
-  // Draw the enemy on the screen, required method for game
+  // Draws the enemy on the screen
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
@@ -39,11 +45,8 @@ allEnemies.push(bug1);
 allEnemies.push(bug2);
 allEnemies.push(bug3);
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
 class Player {
+  //player object creator
   constructor(x, y) {
     this.sprite = "images/char-boy.png";
     this.x = x;
@@ -51,11 +54,11 @@ class Player {
   }
 
   update(dt) {}
-
+  //Draws player image
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-
+  //Allows the player to move the character with the wasd keys
   handleInput(keyPress) {
     if (keyPress == "a" && this.x > 0) {
       this.x -= 100;
@@ -69,17 +72,19 @@ class Player {
     if (keyPress == "w" && this.y > 0) {
       this.y -= 83;
     }
+    if (this.y < 0) {
+      setTimeout(function() {
+        player.x = 200;
+        player.y = 390;
+      }, 600);
+    }
   }
 }
-
+//Creates a new player object at the starting x and y location
 let player = new Player(200, 390);
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to the
+// Player.handleInput() method.
 document.addEventListener("keyup", function(e) {
   player.handleInput(e.key);
 });
