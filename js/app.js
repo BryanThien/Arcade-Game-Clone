@@ -1,10 +1,12 @@
+'use strict;';
+
 // Enemies that are rendered
-let allEnemies = [];
+const allEnemies = [];
 
 class Enemy {
-  //Enemy object creator
+  // Enemy object creator
   constructor(x, y, speed) {
-    this.sprite = "images/enemy-bug.png";
+    this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -30,61 +32,65 @@ class Enemy {
     }
   }
   // Draws the enemy on the screen
+
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 }
 
-//3 enemies created
+// 3 enemies created
 const bug1 = new Enemy(10, 60, 200);
 const bug2 = new Enemy(10, 140, 200);
 const bug3 = new Enemy(10, 225, 200);
 
-//puts the bug objects into the render.js to output
+// puts the bug objects into the render.js to output
 allEnemies.push(bug1);
 allEnemies.push(bug2);
 allEnemies.push(bug3);
 
 class Player {
-  //player object creator
+  // player object creator
   constructor(x, y) {
-    this.sprite = "images/char-boy.png";
+    this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
   }
 
   update(dt) {}
-  //Draws player image
+  // Draws player image
+
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  //Allows the player to move the character with the wasd keys
+  // Allows the player to move the character with the wasd keys
+
   handleInput(keyPress) {
-    if (keyPress == "a" && this.x > 0) {
+    if (keyPress === 'a' && this.x > 0) {
       this.x -= 100;
     }
-    if (keyPress == "s" && this.y < 350) {
+    if (keyPress === 's' && this.y < 350) {
       this.y += 83;
     }
-    if (keyPress == "d" && this.x < 400) {
+    if (keyPress === 'd' && this.x < 400) {
       this.x += 100;
     }
-    if (keyPress == "w" && this.y > 0) {
+    if (keyPress === 'w' && this.y > 0) {
       this.y -= 83;
     }
+
     if (this.y < 0) {
-      setTimeout(function() {
-        player.x = 200;
-        player.y = 390;
+      setTimeout(() => {
+        this.x = 200;
+        this.y = 390;
       }, 600);
     }
   }
 }
-//Creates a new player object at the starting x and y location
+// Creates a new player object at the starting x and y location
 let player = new Player(200, 390);
 
 // This listens for key presses and sends the keys to the
 // Player.handleInput() method.
-document.addEventListener("keyup", function(e) {
+document.addEventListener('keyup', (e) => {
   player.handleInput(e.key);
 });
